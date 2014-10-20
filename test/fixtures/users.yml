@@ -1,3 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# This was originally empty in order for the email uniqueness test to pass. Section 8.2.4 requires changes be made now for valid login testing.
 
-# empty
+# Listing 8.19
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+
+

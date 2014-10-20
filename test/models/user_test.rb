@@ -65,4 +65,9 @@ require 'test_helper'
       @user.password = @user.password_confirmation = "a" * 5
       assert_not @user.valid?
     end
+
+    # Listing 8.43
+    test "authenticated? should return false for a user with nil digest" do
+      assert_not @user.authenticated?('')
+    end
   end
