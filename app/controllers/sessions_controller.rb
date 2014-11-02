@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)  # Listing 8.49
       # remember user  # Listing 8.34 (Before "remember checkbox")
-      redirect_to user   #Rails converts to this to the route for user's profile page: user_path(user)
+      # redirect_to user   # Rails converts to this to the route for user's profile page: user_path(user)
+      redirect_back_or user # Listing 9.29
     else
       # Create an error message.  Listing 8.9.
       flash.now[:danger] = 'Invalid email/password combination' #Not quite right!

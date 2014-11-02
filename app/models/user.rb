@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Replace 'true' with 'case_sensitive: false' -- rails infers that it is true as well
   validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true # allow_blank -- Listing 9.10
 
   # Listing 8.18
   # Returns the hash digest of the given string.
