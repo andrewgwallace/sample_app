@@ -42,13 +42,13 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
 
     # Listing 9.53
-    def destroy
-      User.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to users_url
-    end
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
 
   private
