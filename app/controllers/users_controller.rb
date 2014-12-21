@@ -21,9 +21,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user # Section 8.2.5 / Listing 8.22
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      @user.send_activation_email
+      #  UserMailer.account_activation(@user).deliver_now # Listing 10.19.            REMOVED in Listing 10.32
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+
+      # The following has been replaced with the UserMailer action above for account activation (Listing 10.19).
+      # log_in @user # Section 8.2.5 / Listing 8.22 
+      # flash[:success] = "Welcome to the Sample App!"
+      # redirect_to @user
     else
       render 'new'
     end

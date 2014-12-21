@@ -66,8 +66,12 @@ require 'test_helper'
       assert_not @user.valid?
     end
 
-    # Listing 8.43
     test "authenticated? should return false for a user with nil digest" do
-      assert_not @user.authenticated?('')
+      assert_not @user.authenticated?(:remember, '')
     end
+
+    # Listing 8.43  See Listing 10.25 above for new test method.
+    # test "authenticated? should return false for a user with nil digest" do
+    #   assert_not @user.authenticated?('')
+    # end
   end
