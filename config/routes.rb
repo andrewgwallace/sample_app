@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'account_activations/edit'
 
   get 'sessions/new'
@@ -20,6 +24,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :users
   resources :account_activations, only: [:edit] # Listing 10.1
+  resources :password_resets,     only: [:new, :create, :edit, :update] # Listing 10.35
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
