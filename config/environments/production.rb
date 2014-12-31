@@ -62,7 +62,7 @@ Rails.application.configure do
   
   # listing 10.54
   config.action_mailer.raise_delivery_errors = true # (previously commented out)
-  confit.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
   host = 'agile-depths-1220.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
