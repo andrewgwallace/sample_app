@@ -1,13 +1,17 @@
-<!-- 7.3.3 Signup error messages -->
-<% if @user.errors.any? %>
+<!-- 11.39 - Error messages that work with other objects. -->
+<% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+      The form contains <%= pluralize(object.errors.count, "error") %>.
     </div>
     <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
     </ul>
   </div>
 <% end %>
+
+
+
+<!-- Listing 7.3.3 - Signup error messages - PLEASE SEE NOTES.txt file  -->

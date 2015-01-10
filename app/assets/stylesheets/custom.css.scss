@@ -1,9 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-// An example of an SCSS variable.  Not used as the bootstrap-sass gem has a value for this: $gray-light
+/* An example of an SCSS variable.  Not used as the bootstrap-sass gem has a value for this: $gray-light */
 $light-gray: #777;
-// To learn more about the color variables used, go to "http://getbootstrap.com/customize/#less-variables" -- "@" in LESS is replaced with "$" in SASS
-// To learn more about SASS -- visit: http://sass-lang.com/
+/* To learn more about the color variables used, go to "http://getbootstrap.com/customize/#less-variables" -- "@" in LESS is replaced with "$" in SASS
+ To learn more about SASS -- visit: http://sass-lang.com/  */
 
 /* mixins, variables, etc. */
 
@@ -171,7 +171,7 @@ input {
   height: auto !important;
 }
 
-// Listing 7.19: CSS for styling error messages
+/* Listing 7.19: CSS for styling error messages */
 #error_explanation {
   color: red;
   ul {
@@ -187,7 +187,7 @@ input {
   }
 }
 
-// Listing 8.48 -- CSS for the "remember me" checkbox
+/* Listing 8.48 -- CSS for the "remember me" checkbox */
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -202,7 +202,7 @@ input {
   margin-left: 0;
 }
 
-// Listing 9.35 -- CSS for the users index.
+/* Listing 9.35 -- CSS for the users index. */
 
 /* Users index */
 .users {
@@ -212,5 +212,52 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
   }
 }

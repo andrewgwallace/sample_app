@@ -1,0 +1,10 @@
+<!-- Listing 11.46 - The status feed partial.  Manually created file. '@feed_items' defined in static_pages_controller.rb -->
+
+<% if @feed_items.any? %>
+	<ol class="microposts">
+		<%= render @feed_items %>
+	</ol>
+	<%= will_paginate @feed_items %>
+<% end %>
+
+<!-- Here Rails knows to call the micropost partial because each element of @feed_items has class Micropost. This causes Rails to look for a partial with the corresponding name in the views directory of the given resource: -->

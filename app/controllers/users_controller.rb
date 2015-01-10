@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page]) # Listing 11.22
   end
 
   def new
@@ -66,14 +67,14 @@ class UsersController < ApplicationController
     # Listing 9.12
     # Before filters
 
-    #Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location # Listing 9.28 -- See sessions_helper.rb for definition
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    #Confirms a logged-in user.  MOVED INTO application_controller.rb (Listing 11.31)
+    # def logged_in_user
+    #   unless logged_in?
+    #     store_location # Listing 9.28 -- See sessions_helper.rb for definition
+    #     flash[:danger] = "Please log in."
+    #     redirect_to login_url
+    #   end
+    # end
 
     # Listing 9.22
     # Confirms the correct user.

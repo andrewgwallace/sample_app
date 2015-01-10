@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit] # Listing 10.1
   resources :password_resets,     only: [:new, :create, :edit, :update] # Listing 10.35
+  resources :microposts,          only: [:create, :destroy] # Listing 11.29
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

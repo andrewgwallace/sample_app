@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy # Listing 11.10 | 11.18
   attr_accessor :remember_token, :activation_token, :reset_token # Listing 8.32 | 10.3 | 10.40
   before_save :downcase_email 
   before_create :create_activation_digest
@@ -85,6 +86,13 @@ class User < ActiveRecord::Base
   # Returns true if a password reset has expired.
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # Listing 11.44
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    Micropost.where("user_id = ?", id) # The '?' properly escapes the id before being included in the SQL query to avoid SQL injection.
   end
 
     private

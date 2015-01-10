@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %> <!-- 'object: f.object' added in Listing 11.41 -->
 
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
