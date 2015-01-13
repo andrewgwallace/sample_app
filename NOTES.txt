@@ -1,5 +1,7 @@
 
-Throughout the tutorial, some code has been replace with updated code.  Where is was unable to be commented out it has been noted in those files and located here.  You can copy and past the code from this file into the appropriate location.
+Throughout the tutorial, some code has been replaced with updated code.  
+Where it was unable to be commented out it has been noted in those files and the re-located here.  
+You can copy and past the code from this file into the appropriate location as you progress through the exercise.
 
 
 The colde in Listing 7.3.3 has been removed from the '_error_messages.html.erb' file as it only references the @user variable explicity.
