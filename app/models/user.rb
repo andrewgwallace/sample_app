@@ -107,6 +107,7 @@ class User < ActiveRecord::Base
      # Listing 12.45 - Using key-value pairs in the feed's where method. Replaced in Listing 12.46 
       # Micropost.where("user_id IN (:following_ids) OR user_id = user_id",
       #                 following_ids: following_ids, user_id: id)
+    # Listing 12.46 - The final implementation of the feed.
     following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
     Micropost.where("user_id IN (#{following_ids})
