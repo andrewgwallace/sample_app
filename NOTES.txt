@@ -4,7 +4,7 @@ Where it was unable to be commented out it has been noted in those files and the
 You can copy and past the code from this file into the appropriate location as you progress through the exercise.
 
 
-The colde in Listing 7.3.3 has been removed from the '_error_messages.html.erb' file as it only references the @user variable explicity.
+The code in Listing 7.3.3 has been removed from the '_error_messages.html.erb' file as it only references the @user variable explicity.
 Instead a form variable 'f' is passed to the partial and access to the object is done through 'f.object'.  This allows the error messages to be customized depending on the object.
 
 For example:
