@@ -1,0 +1,10 @@
+<!-- Listing 12.19.  A partial for a follow/unfollow form. Manually created. -->
+<% unless current_user?(@user) %>
+	<div id="follow_form">
+	<% if current_user.following?(@user) %>
+		<%= render 'unfollow' %> 
+	<% else %>
+		<%= render 'follow' %>
+	<% end %>
+	</div>
+<% end %>

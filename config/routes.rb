@@ -22,10 +22,18 @@ Rails.application.routes.draw do
   get 'login'     => 'sessions#new'
   post 'login'    => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :users
+  # resources :users # Commented out as it is replaced in Listing 12.15
+  # BEGIN - Listing 12.15
+  resources :users do 
+    member do 
+      get :following, :followers
+    end
+  end
+  # END - Listing 12.15
   resources :account_activations, only: [:edit] # Listing 10.1
   resources :password_resets,     only: [:new, :create, :edit, :update] # Listing 10.35
   resources :microposts,          only: [:create, :destroy] # Listing 11.29
+  resources :relationships,       only: [:create, :destroy] # Listing 12.20
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

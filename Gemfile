@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.1.2' # - Not shown in Listing 11.66
+# ruby version not shown in Listing 11.66
+ruby '2.1.2'
 
 gem 'rails',                   '4.2.0.beta2'
 gem 'bcrypt',                  '3.1.7'

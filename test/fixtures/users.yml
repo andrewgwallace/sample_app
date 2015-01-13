@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-# This was originally empty in order for the email uniqueness test to pass. Section 8.2.4 requires changes be made now for valid login testing.
+# This was originally empty in order for the email uniqueness test to pass. 
+# Section 8.2.4 requires changes be made now for valid login testing.
 
 # Listing 8.19
 michael:

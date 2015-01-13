@@ -1,5 +1,15 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy # Listing 11.10 | 11.18
+  # Listing 12.2
+  has_many :active_relationships, class_name:   "Relationship",
+                                  foreign_key:  "follower_id",
+                                  dependent:    :destroy
+  # Listing 12.12
+  has_many :passive_relationships, class_name:  "Relationship",
+                                  foreign_key: "followed_id",
+                                  dependent:   :destroy
+  has_many :following, through: :active_relationships, source: :followed # Listing 12.8
+  has_many :followers, through: :passive_relationships, source: :follower # Listing 12.12
   attr_accessor :remember_token, :activation_token, :reset_token # Listing 8.32 | 10.3 | 10.40
   before_save :downcase_email 
   before_create :create_activation_digest
@@ -92,7 +102,31 @@ class User < ActiveRecord::Base
   # Defines a proto-feed.
   # See "Following users" for the full implementation.
   def feed
-    Micropost.where("user_id = ?", id) # The '?' properly escapes the id before being included in the SQL query to avoid SQL injection.
+    # Micropost.where("user_id = ?", id) # The '?' properly escapes the id before being included in the SQL query to avoid SQL injection. Replaced with code in Listing 12.43
+    # Micropost.where("user_id in (?) OR user_id = ?", following_ids, id), # Listing 12.43 - Replaced in Listing 12.45
+     # Listing 12.45 - Using key-value pairs in the feed's where method. Replaced in Listing 12.46 
+      # Micropost.where("user_id IN (:following_ids) OR user_id = user_id",
+      #                 following_ids: following_ids, user_id: id)
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
+  # BEGIN - Listing 12.10
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
   end
 
     private

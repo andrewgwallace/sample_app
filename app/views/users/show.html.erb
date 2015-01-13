@@ -7,9 +7,15 @@
 		     <%= @user.name %>
 		   </h1>
 		</section>
+		<!-- BEGIN Listing 12.23 -->
+		<section class="stats">
+			<%= render 'shared/stats' %>
+		</section>
+		<!-- END Listing 12.23 -->
 	</aside>
 	<!-- BEGIN Listing 11.23 -->
 	<div class="col-md-8">
+		<%= render 'follow_form' if logged_in? %> <!-- Listing 12.23 -->
 		<% if @user.microposts.any? %>
 			<h3>Microposts (<%= @user.microposts.count %>)</h3>
 			<ol class="microposts">

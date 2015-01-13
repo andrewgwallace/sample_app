@@ -1,0 +1,3 @@
+// Listing 12.37 - The JavaScript embedded Ruby to create a following relationship. Manually created.
+$("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>")
+$("#followers").html('<%= @user.followers.count %>')

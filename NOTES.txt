@@ -1,4 +1,6 @@
 
+Throughout the tutorial, some code has been replace with updated code.  Where is was unable to be commented out it has been noted in those files and located here.  You can copy and past the code from this file into the appropriate location.
+
 
 The colde in Listing 7.3.3 has been removed from the '_error_messages.html.erb' file as it only references the @user variable explicity.
 Instead a form variable 'f' is passed to the partial and access to the object is done through 'f.object'.  This allows the error messages to be customized depending on the object.
@@ -7,7 +9,7 @@ For example:
 
 In:  'form_for(@user) do |f|', f.object is @user.
 
-Here is the code from 7.3.3
+LISTING 7.3.3
 
 <!-- 7.3.3 Signup error messages.   -->
 <% if @user.errors.any? %>
@@ -21,4 +23,20 @@ Here is the code from 7.3.3
       <% end %>
     </ul>
   </div>
+<% end %>
+
+
+LISTING 12.21
+
+<%= form_for(current_user.active_relationships.build) do |f| %>
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
+
+LISTING 12.22
+
+<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+
+        html: { method: :delete }) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
 <% end %>

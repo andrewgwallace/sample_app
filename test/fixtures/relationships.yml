@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+#empty - Previously empty.  Populated in Listing 12.27
+
+# Listing 12.27
+one: 
+   follower: michael
+   followed: lana
+
+two:
+   follower: michael
+   followed: mallory
+
+three:
+   follower: lana
+   followed: michael
+
+four:
+   follower: archer
+   followed: michael
